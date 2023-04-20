@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:maily/screens/FirstPage.dart';
 import 'package:maily/screens/SignUp.dart';
+import 'package:maily/screens/connexion.dart';
 import 'package:rive/rive.dart';
 import 'dart:ui';
 import 'package:get/get.dart';
@@ -27,14 +28,14 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body:
-
-      Stack(children: [
+      body: Stack(children: [
         Container(
-            child: const RiveAnimation.asset(
-          "assets/animations/mailyBackGrd.riv",
-          fit: BoxFit.fill,
-        )),
+            width: double.maxFinite,
+            height: double.maxFinite,
+            child: Image.asset(
+              "assets/back.png",
+              fit: BoxFit.cover,
+            )),
         Positioned.fill(
           child: BackdropFilter(
             filter: ImageFilter.blur(sigmaX: 7, sigmaY: 7),
@@ -192,7 +193,6 @@ class _LoginState extends State<Login> {
                                   width: 2)),
                         ),
                         onPressed: signIn,
-                       
                         child: const Text('Log in to Maily')),
                     TextButton(
                         onPressed: () {
@@ -237,24 +237,17 @@ class _LoginState extends State<Login> {
     );
   }
 
-
-Future signIn() async {
- 
- 
- 
-  try {
-  await FirebaseAuth.instance.signInWithEmailAndPassword(
-    email: _controller1.text.trim(), 
-    password: _controller2.text.trim() );
-    } on FirebaseAuthException catch(e){
+  Future signIn() async {
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: _controller1.text.trim(), password: _controller2.text.trim());
+      Get.to(() => const Home(),
+          transition: Transition.noTransition,
+          duration: const Duration(seconds: 1));
+    } on FirebaseAuthException catch (e) {
       print(e);
     }
-   // navig
 
+    // navig
+  }
 }
-
-}
-
-
-
-

@@ -18,10 +18,13 @@ class _FirstPageState extends State<FirstPage> {
     return Scaffold(
       body: Stack(
         children: [
-          const RiveAnimation.asset(
-            "assets/animations/mailyBackGrd.riv",
-            fit: BoxFit.fill,
-          ),
+          Container(
+              width: double.maxFinite,
+              height: double.maxFinite,
+              child: Image.asset(
+                "assets/back.png",
+                fit: BoxFit.cover,
+              )),
           Positioned.fill(
             child: BackdropFilter(
               filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),

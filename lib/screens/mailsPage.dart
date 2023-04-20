@@ -15,23 +15,21 @@ class HEY extends StatefulWidget {
   const HEY({super.key});
 
   @override
-   State<HEY> createState() => _HEYState();
+  State<HEY> createState() => _HEYState();
 }
 
-class _HEYState extends State<HEY>{
-   @override
-   Widget build(BuildContext context) => Scaffold(
-   body: StreamBuilder<User?>(
-    stream:  FirebaseAuth.instance.authStateChanges(),
-    builder: (context, snapshot) {
-      
-       if (snapshot.hasData){
-        return const Home();
-      }
-      else{
-        return const Login();
-      }
-    },
-   ),
-   );
+class _HEYState extends State<HEY> {
+  @override
+  Widget build(BuildContext context) => Scaffold(
+        body: StreamBuilder<User?>(
+          stream: FirebaseAuth.instance.authStateChanges(),
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              return const Home();
+            } else {
+              return const Login();
+            }
+          },
+        ),
+      );
 }
