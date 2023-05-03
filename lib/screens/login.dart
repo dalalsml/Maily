@@ -4,11 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:maily/screens/FirstPage.dart';
 import 'package:maily/screens/SignUp.dart';
 import 'package:maily/screens/connexion.dart';
+import 'package:maily/screens/utils.dart';
 import 'package:rive/rive.dart';
 import 'dart:ui';
 import 'package:get/get.dart';
 
 import 'SignUPappel.dart';
+import 'forgotPasswordPage.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -169,15 +171,20 @@ class _LoginState extends State<Login> {
                     Container(
                       alignment: Alignment.centerRight,
                       margin: const EdgeInsets.only(right: 20),
-                      child: TextButton(
-                          onPressed: signIn,
+                     
+                          child: GestureDetector(
                           child: const Text(
                             'Forgot the password ?',
                             style: TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.w400,
                                 color: Colors.black),
-                          )),
+                          ),
+                          onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => ForgotPasswordPage(),
+                            )) ,
+                          ),
+                          
                     ),
                     ElevatedButton(
                         style: ElevatedButton.styleFrom(
@@ -246,6 +253,8 @@ class _LoginState extends State<Login> {
           duration: const Duration(seconds: 1));
     } on FirebaseAuthException catch (e) {
       print(e);
+      Utils.showSnackBar(e.message);
+
     }
 
     // navig

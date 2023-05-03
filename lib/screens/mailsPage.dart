@@ -5,6 +5,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:maily/screens/FirstPage.dart';
 import 'package:maily/screens/SignUp.dart';
+import 'package:maily/screens/animated_bottom_navbar.dart';
 import 'package:maily/screens/connexion.dart';
 import 'package:maily/screens/login.dart';
 import 'package:rive/rive.dart';
@@ -25,7 +26,7 @@ class _HEYState extends State<HEY> {
           stream: FirebaseAuth.instance.authStateChanges(),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              return const Home();
+              return Home();
             } else {
               return const Login();
             }

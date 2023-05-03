@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:maily/screens/connexion.dart';
 import 'package:maily/screens/login.dart';
+import 'package:maily/screens/verifyemailpage.dart';
 
 import 'SignUp.dart';
 
@@ -22,7 +23,7 @@ class _InscriptionState extends State<Inscription>{
     builder: (context, snapshot) {
       
        if (snapshot.hasData){
-        return const Home();
+        return const VerifyEmailPage();
       }
       else{
         return const SignUp();

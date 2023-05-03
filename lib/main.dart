@@ -3,9 +3,11 @@ import 'package:maily/screens/FirstPage.dart';
 import 'package:get/get.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:maily/screens/utils.dart';
+import 'package:maily/screens/utils.dart';
 import 'firebase_options.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
+import 'screens/utils.dart';
 import 'screens/utils.dart';
 
 void main() async {
@@ -27,7 +29,8 @@ class Maily_App extends StatefulWidget {
 class _Maily_AppState extends State<Maily_App> {
   @override
   Widget build(BuildContext context) {
-    return const GetMaterialApp(
+    return  GetMaterialApp(
+      scaffoldMessengerKey: Utils.messengerKey,
       debugShowCheckedModeBanner: false,
       home: FirstPage(),
     );
