@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "725637636773",
+    "firebase_url": "https://maily-bbc51-default-rtdb.firebaseio.com",
+    "project_id": "maily-bbc51",
+    "storage_bucket": "maily-bbc51.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:725637636773:android:0db3472660b692a31f234c",
+        "android_client_info": {
+          "package_name": "com.example.maily"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "725637636773-1sd5k59pqkh1b5vv9rf4irs9e2c5m606.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.maily",
+            "certificate_hash": "666230f7a8ab34c5086a1b42a9bb945b2646e952"
+          }
+        },
+        {
+          "client_id": "725637636773-fmse0seclqtjpaom2fkipc6q7i9t027a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXVetjgEcP8m7H98zMBj95SD5XXp7h3S4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "725637636773-fmse0seclqtjpaom2fkipc6q7i9t027a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
