@@ -77,8 +77,8 @@ static Future<List<Mail>> getMails() async {
       Time: '08:05',
     );
     initial =true;
-    await insertMail(fido);
-    await insertMail(fido2);
+    /*await insertMail(fido);
+    await insertMail(fido2);*/
 
     //deleteAllMails();
   }

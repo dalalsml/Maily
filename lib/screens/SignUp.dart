@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:maily/screens/utils.dart';
 
@@ -17,10 +18,13 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
-  final _emailController = TextEditingController();
+  final _emailController = TextEditingController(); 
   final _passController1 = TextEditingController();
+  final _phoneController = TextEditingController();
   final _passController2 = TextEditingController();
   final formKey = GlobalKey<FormState>();
+  final ref = FirebaseDatabase.instance.ref('Users');  //Pas sure
+
   Icon icon = const Icon(
     Icons.visibility_off,
     color: Colors.black,
@@ -142,6 +146,7 @@ class _SignUpState extends State<SignUp> {
                           margin: const EdgeInsets.symmetric(
                               horizontal: 20, vertical: 4),
                           child: IntlPhoneField(
+                            controller:_phoneController,
                             initialCountryCode: AutofillHints.countryCode,
                             cursorColor: const Color.fromARGB(255, 226, 98, 39),
                             decoration: const InputDecoration(
@@ -339,14 +344,35 @@ class _SignUpState extends State<SignUp> {
   Future signUp() async {
     final isValid = formKey.currentState!.validate();
     if (!isValid) return;
+    if (_passController1.text.trim() != _passController2.text.trim()){
+        Utils.showSnackBar('Password and confirmation password do not match. Please try again.');
+        _passController1.clear();
+        _passController2.clear();
+    }else {
     try {
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: _emailController.text.trim(),
         password: _passController1.text.trim(),
+      ).then((value){
+        ref.child(value.user!.uid.toString()).set(
+        {
+          'uid': value.user!.uid.toString(),
+          'userName':'',
+          'email': value.user!.email.toString(),
+          'phone':_phoneController.text.trim(),
+          'profilPicture':'',
+        }
       );
+
+      });
+
+      
+
+
     } on FirebaseAuthException catch (e) {
       print(e);
       Utils.showSnackBar(e.message);
     }
+  }
   }
 }
